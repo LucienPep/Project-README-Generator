@@ -8,15 +8,16 @@ const questions = {
     description: 'Give a brief description of your project',
     install: 'What packages do you need to install and how?',
     usage: 'How is this package used?',
+    license: 'Which license was used?',
     contributing: 'Would you like users to contribute if so what requirements should be met?',
     tests: 'Add tests here - ',
     questions: ['What is your GitHub username?','What is your email address?']
 }
 
 // TODO: Create a function to write README file
-function writeToFile(data) {    
+function writeToFile(title, data) {    
 
-    fs.appendFile('README.md', data, function (err){
+    fs.appendFile((title + '.md'), data, function (err){
         if (err) {
             console.log(err)
         }
@@ -51,6 +52,12 @@ function init() {
           name: 'usage',
         },
         {
+          type: 'list',
+          message: questions.license,
+          choices: ['MIT', 'Babel', '.NET', 'Rails'],
+          name: 'license',
+        },
+        {
           type: 'input',
           message: questions.contributing,
           name: 'contributing',
@@ -72,33 +79,43 @@ function init() {
         },
     ])
     .then((response) =>{
-    console.log(response)
-    //console.log(response.contributing)
+    //console.log(response)
 
-    const readmeContent = generateReadme(response)
+    module.exports = response
+
+    const generateMarkdown = require('./generateMarkdown');
+
+    //console.log(generateMarkdown)
+
+    const readmeContent = generateMarkdown.markdown
 
     console.log(readmeContent)
 
-    writeToFile(readmeContent)
+    writeToFile(response.title, readmeContent)
     })
 }
 
-const generateReadme = ({title, description, install, usage, contributing, tests, question1, question2}) => 
-`# ${title}
-${description}
-## Installation
-${install}
-## Usage
-${usage}
-## Contributing
-${contributing}
-## Tests
-${tests}
-## Questions
-${question1}
-${question2}
 
-`;   
+// const generateReadme = ({title, description, install, usage, contributing, tests, question1, question2}) => 
+// `# ${title}
+// ${description}
+// ## Installation
+// ${install}
+// ## Usage
+// ${usage}
+// ## Contributing
+// ${contributing}
+// ## Tests
+// ${tests}
+// ## Questions
+// For any further questions contact me via:
+
+// GitHub: [${question1}](https://github.com/${question1})
+
+// Email: <${question2}>
+
+//`;   
+
 
 // Function call to initialize app
 init();
