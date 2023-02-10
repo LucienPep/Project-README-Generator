@@ -54,7 +54,7 @@ function init() {
         {
           type: 'list',
           message: questions.license,
-          choices: ['MIT', 'Babel', '.NET', 'Rails'],
+          choices: ['MIT', 'Apache-2.0', 'GPLv3', 'MPL-2.0'],
           name: 'license',
         },
         {
