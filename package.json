@@ -1,14 +1,22 @@
 {
-  "name": "static-site",
+  "name": "week-9-homework",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucienPep/Project-README-Generator.git"
+  },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LucienPep/Project-README-Generator/issues"
+  },
+  "homepage": "https://github.com/LucienPep/Project-README-Generator#readme",
   "dependencies": {
-    "inquirer": "8.2.4"
+    "inquirer": "^8.2.4"
   }
 }
