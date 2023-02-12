@@ -35,7 +35,7 @@ I had a few trials and errors trying to export and input data between the two Ja
 [Tutorial Video for README generator](https://drive.google.com/file/d/1cO798tf2ILP1Y_plhfxkb03s785l0OPs/view?usp=sharing)
 
 ### Installation
-The screenshot below shows how to initiate and install teh correct package to use this generator.
+The screenshot below shows how to initiate and install the correct package to use this generator.
 
 ![](./Assets/Project%209%20install%20Screenshot.png)
 
