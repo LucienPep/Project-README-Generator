@@ -16,7 +16,7 @@
   6. [Questions](#questions)
   
   ## Installation
-  For this generator to function you will need to install the inquirer package using npm install.
+  For this generator to function you will need to install the inquirer 8.2.4 or newer package using npm install.
   
   ## Usage
   For usage please refer to the linked video where I will show you the process for using the generator and example of the data you will need to input.
