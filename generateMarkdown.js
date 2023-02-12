@@ -72,7 +72,7 @@ const generateMarkdown = (data, license) =>
 
   ${license[2]}
   
-  ##Table of Contents
+  ## Table of Contents
   1. [Installation](#installation)
   2. [Usage](#usage)
   3. [Contributing](#contributing)
