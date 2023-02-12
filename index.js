@@ -1,8 +1,8 @@
-// TODO: Include packages needed for this application
+// inquirer and FS packages
 const inquirer = require('inquirer');
 var fs = require('fs');
 
-// TODO: Create an array of questions for user input
+// Questions for inquirer function to call
 const questions = {
     title: 'What is the title of your project?', 
     description: 'Give a brief description of your project',
@@ -14,20 +14,17 @@ const questions = {
     questions: ['What is your GitHub username?','What is your email address?']
 }
 
-// TODO: Create a function to write README file
+// Writes inputed data and markdown data into README.md file
 function writeToFile(title, data) {    
 
     fs.appendFile((title + '.md'), data, function (err){
         if (err) {
             console.log(err)
         }
-        console.log('whoo!')
     })
-    
-
 }
 
-// TODO: Create a function to initialize app
+// Function is called to start asking questions and assigning answers to vars
 function init() {
     inquirer
     .prompt([
@@ -79,43 +76,21 @@ function init() {
         },
     ])
     .then((response) =>{
-    //console.log(response)
 
+    //Makes response from inquiries available to other files that import data.
     module.exports = response
 
+    //imports data from generateMarkdown.js
     const generateMarkdown = require('./generateMarkdown');
-
-    //console.log(generateMarkdown)
 
     const readmeContent = generateMarkdown.markdown
 
-    console.log(readmeContent)
+    //console.log(readmeContent)
 
+    //final data to be sent to writeFile function
     writeToFile(response.title, readmeContent)
     })
 }
-
-
-// const generateReadme = ({title, description, install, usage, contributing, tests, question1, question2}) => 
-// `# ${title}
-// ${description}
-// ## Installation
-// ${install}
-// ## Usage
-// ${usage}
-// ## Contributing
-// ${contributing}
-// ## Tests
-// ${tests}
-// ## Questions
-// For any further questions contact me via:
-
-// GitHub: [${question1}](https://github.com/${question1})
-
-// Email: <${question2}>
-
-//`;   
-
 
 // Function call to initialize app
 init();

@@ -1,3 +1,4 @@
+//importing data from index.js and declaring specific values
 const response = require('./index')
 const license = response.license
 const licenseKey = response.license.substring(0,3)
@@ -5,8 +6,7 @@ var shield = ''
 var link = ''
 var licenseData = ''
 
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
+//Function to check which license has been selected and choose the correct badge
 function renderLicenseBadge(licenseKey) {
   if(!licenseKey == ''){
     if (licenseKey == 'MIT'){
@@ -29,8 +29,7 @@ function renderLicenseBadge(licenseKey) {
     renderLicenseLink(licenseKey)
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
+//Function to check which license has been selected and create a self contained link for that license
 function renderLicenseLink(licenseKey) { 
   if(!licenseKey == ''){
     if (licenseKey == 'MIT'){
@@ -51,20 +50,18 @@ function renderLicenseLink(licenseKey) {
   renderLicenseSection()
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
+//combines both license badge and link and adds markdown to add into main markdown file
 function renderLicenseSection() {
-  var linkData = '##License<br>[' + license + '](' + link + ')'
+  var linkDataOne = '## License'
+  var linkDataTwo = 'The license I am using for my project is<br>[' + license + '](' + link + ')'
   var shieldData = shield 
 
-  licenseData = [linkData, shieldData]
-
-  console.log(licenseData.linkData)
+  licenseData = [linkDataOne, linkDataTwo, shieldData]
 
   finalMarkdown()
 }
 
-// TODO: Create a function to generate markdown for README
+// function to create data and add collected values into markdown text
 const generateMarkdown = (data, license) =>
   `
   # ${data.title}
@@ -73,14 +70,15 @@ const generateMarkdown = (data, license) =>
 
   ---
 
-  ${license.shieldData}
+  ${license[2]}
   
   ##Table of Contents
   1. [Installation](#installation)
   2. [Usage](#usage)
   3. [Contributing](#contributing)
   4. [Tests](#tests)
-  5. [Questions](#questions)
+  5. [License](#license)
+  6. [Questions](#questions)
   
   ## Installation
   ${data.install}
@@ -94,14 +92,17 @@ const generateMarkdown = (data, license) =>
   ## Tests
   ${data.tests}
 
+  ${license[0]}
+
+  ${license[1]}
+
   ## Questions
-  For any further questions contact me via:
   
   GitHub: [${data.question1}](https://github.com/${data.question1})
+
+  For any further questions contact me via:
   
   Email: <${data.question2}>
-  
-  ${license.linkData}
   
   `;
 
@@ -109,6 +110,7 @@ const generateMarkdown = (data, license) =>
 
 renderLicenseBadge(licenseKey)
 
+//final function to export all collected markdown data 
 function finalMarkdown(){
 
 module.exports.markdown = generateMarkdown(response, licenseData);
